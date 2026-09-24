@@ -1,0 +1,31 @@
+IDA lib/x86/libfoo.so
+
+```
+_BOOL4 __cdecl Java_sg_vantagepoint_uncrackable2_CodeCheck_bar(JNIEnv *a1, int a2, void *pData)
+{
+  const char *v3; // esi
+  _BOOL4 result; // eax
+  char s2[24]; // [esp+0h] [ebp-2Ch] BYREF
+  unsigned int v6; // [esp+18h] [ebp-14h]
+                                                // a1 -- как я понял является указателем на класс, хоть и непривычно передан, не через ecx, и метод __cdecl, а не __thiscall / __fastcall
+                                                // однако 
+                                                // a2 -- я не вижу обращения к нему. может аналогично win32 это void * /*<edx>*/
+                                                // BOOL as sized 4
+                                                // ? BOOL __fastcall CodeCheck::bar(CodeCheck * this, void * /*edx*/, byte * pData); ?
+                                                // ДА. но мы не передаем указатель на класс, мы передаем `JNIEnv *` лол.
+  v6 = __readgsdword(0x14u);
+  result = 0;                                   // Если приложение штатно запущено (флаг инита встал в true)
+                                                // Верифицируем строку
+  if ( g_bSomeFlag == 1 )
+  {
+    strcpy(s2, "Thanks for all the fish");
+    v3 = (*a1)->GetByteArrayElements(a1, pData, 0);
+    if ( (*a1)->GetArrayLength(a1, pData) == 23 && !strncmp(v3, s2, 0x17u) )
+      return 1;
+  }                                             // Иначе сразу возвращаем false, скипая верификацию
+  return result;
+}
+```
+
+
+Password String: `Thanks for all the fish`

@@ -34,5 +34,5 @@ int main()
 {
 	OWASP::UCL1();
 
-	return S_OK;
+	return EXIT_SUCCESS;
 }
