@@ -89,8 +89,8 @@ public class a {
 ---
 
 # 3. Решение
-[Ответ по задаче](..\sol\result.txt)    
-[Решение (OWASP::UCL1)](..\..\..\..\Utils\OWASP_1\src\Source.cpp)
+[Ответ по задаче](../sol/result.txt)    
+[Решение (OWASP::UCL1)](../../../../Utils/OWASP_1/src/Source.cpp)
 
 Будь то win32, я бы сделал одно из:
 - Хук string::Equals(string this, string in), чтоб вытащить готовый ключ    
