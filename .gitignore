@@ -103,3 +103,32 @@ package-lock.json
 Thumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+# ==============================================================================
+# 8. C++ BUILD ARTIFACTS (MSVC & CMake)
+# ==============================================================================
+# Папки сборки Visual Studio
+x64/
+x86/
+Debug/
+Release/
+bin/
+obj/
+
+# Временные файлы компилятора
+*.obj
+*.o
+*.pdb
+*.idb
+*.ilk
+*.exp
+*.lib
+*.exe
+*.tlog
+*.log
+
+# Кэш CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeUserPresets.json
