@@ -1,0 +1,25 @@
+`OWASP::UCL1` Sol
+HS2BA: 8D 12 76 84 CB C3 7C 17 61 6D 80 6C F5 04 73 CC
+B64De: E5 42 62 15 CB 5B 9A 06 C3 A0 B5 E6 A4 BD 76 9A 49 E8 F0 74 F8 2E FF 1D 95 AB 7C 17 14 76 18 E7
+
+--Result--
+49 -> `I`
+20 -> ` `
+77 -> `w`
+61 -> `a`
+6E -> `n`
+74 -> `t`
+20 -> ` `
+74 -> `t`
+6F -> `o`
+20 -> ` `
+62 -> `b`
+65 -> `e`
+6C -> `l`
+69 -> `i`
+65 -> `e`
+76 -> `v`
+65 -> `e`
+
+
+Password String: `I want to believe`

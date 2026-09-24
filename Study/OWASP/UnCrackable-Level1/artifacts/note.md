@@ -85,3 +85,15 @@ public class a {
 
 > Сложно ориентироваться, т.к. много псевдо-обфускации функций классов a/b/c    
 > В JADX приведу к именам на свое усмотрение, благо хоткеи Xref Name работают аналогично IDA
+
+---
+
+# 3. Решение
+[Ответ по задаче](..\sol\result.txt)    
+[Решение (OWASP::UCL1)](..\..\..\..\Utils\OWASP_1\src\Source.cpp)
+
+Будь то win32, я бы сделал одно из:
+- Хук string::Equals(string this, string in), чтоб вытащить готовый ключ    
+`return struserInput.equals(new String(strCorrectAnswer));`
+- Патч-байт топорного байпаса   
+`return true; //struserInput.equals(new String(strCorrectAnswer));`
