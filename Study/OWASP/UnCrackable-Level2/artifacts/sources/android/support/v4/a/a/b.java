@@ -1,0 +1,78 @@
+package android.support.v4.a.a;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.TypedValue;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class b {
+
+    public static abstract class a {
+        public abstract void a(int i);
+
+        public final void a(final int i, Handler handler) {
+            if (handler == null) {
+                handler = new Handler(Looper.getMainLooper());
+            }
+            handler.post(new Runnable() { // from class: android.support.v4.a.a.b.a.2
+                @Override // java.lang.Runnable
+                public void run() {
+                    a.this.a(i);
+                }
+            });
+        }
+
+        public abstract void a(Typeface typeface);
+
+        public final void a(final Typeface typeface, Handler handler) {
+            if (handler == null) {
+                handler = new Handler(Looper.getMainLooper());
+            }
+            handler.post(new Runnable() { // from class: android.support.v4.a.a.b.a.1
+                @Override // java.lang.Runnable
+                public void run() {
+                    a.this.a(typeface);
+                }
+            });
+        }
+    }
+
+    public static Typeface a(Context context, int i, TypedValue typedValue, int i2, a aVar) {
+        if (context.isRestricted()) {
+            return null;
+        }
+        return a(context, i, typedValue, i2, aVar, null, true);
+    }
+
+    private static Typeface a(Context context, int i, TypedValue typedValue, int i2, a aVar, Handler handler, boolean z) {
+        Resources resources = context.getResources();
+        resources.getValue(i, typedValue, true);
+        Typeface typefaceA = a(context, resources, typedValue, i, i2, aVar, handler, z);
+        if (typefaceA != null || aVar != null) {
+            return typefaceA;
+        }
+        throw new Resources.NotFoundException("Font resource ID #0x" + Integer.toHexString(i) + " could not be retrieved.");
+    }
+
+    /* JADX WARN: Removed duplicated region for block: B:36:0x009a  */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+        To view partially-correct code enable 'Show inconsistent code' option in preferences
+    */
+    private static android.graphics.Typeface a(android.content.Context r14, android.content.res.Resources r15, android.util.TypedValue r16, int r17, int r18, android.support.v4.a.a.b.a r19, android.os.Handler r20, boolean r21) {
+        /*
+            Method dump skipped, instruction units count: 205
+            To view this dump change 'Code comments level' option to 'DEBUG'
+        */
+        throw new UnsupportedOperationException("Method not decompiled: android.support.v4.a.a.b.a(android.content.Context, android.content.res.Resources, android.util.TypedValue, int, int, android.support.v4.a.a.b$a, android.os.Handler, boolean):android.graphics.Typeface");
+    }
+
+    public static Drawable a(Resources resources, int i, Resources.Theme theme) {
+        return Build.VERSION.SDK_INT >= 21 ? resources.getDrawable(i, theme) : resources.getDrawable(i);
+    }
+}

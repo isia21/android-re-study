@@ -1,0 +1,8 @@
+IDA lib/x86/libfoo.so
+
+> 1D 08 11 13 0F 17 49 15 0D 00 03 19 5A 1D 13 15 | 08 0E 5A 00 | 17 08 13 14 | 00
+
+> Ответ = 0x1d0811130f1749150d0003195a1d1315080e5a0017081314 ^ `pizzapizzapizzapizzapizz` = `making owasp great again`
+
+
+Password String: `making owasp great again`
