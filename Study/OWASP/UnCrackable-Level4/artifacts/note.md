@@ -494,3 +494,12 @@ jmethodID makeText =
         "(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;"
     );
     ```
+
+    ---
+
+```
+source ~/.profile
+cd tools/scripts/
+re-elf-mod.sh all -c ~/dev/sandbox/android-re-study/Study/OWASP/UnCrackable-Level4/elf_mod.config.sh
+adb logcat | grep -iE 'rootbeer|Trojan|fatal|error|elf|som33ly'
+```
