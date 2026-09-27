@@ -1,10 +1,6 @@
 // bad sp value at call has been detected, the output may be wrong!
-BYTE *__fastcall gXftm3iswpkVgBNDUp()
+BYTE *__fastcall gXftm3iswpkVgBNDUp(void *jnienv, void *thz, BYTE *pData, BYTE u8Key)
 {
-  __int64 v0; // rdx
-  unsigned __int8 v1; // cl
-  __int64 v2; // rdi
-  __int64 v3; // rsi
   int v4; // eax
   int v5; // eax
   int v6; // eax
@@ -8582,7 +8578,7 @@ BYTE *__fastcall gXftm3iswpkVgBNDUp()
   __int64 *v8579; // [rsp+C8h] [rbp-3FE8h]
   __int64 v8580; // [rsp+D8h] [rbp-3FD8h]
   void (__fastcall *v8581)(_QWORD, _QWORD, _QWORD, _QWORD); // [rsp+E0h] [rbp-3FD0h]
-  __int64 v8582; // [rsp+E8h] [rbp-3FC8h]
+  BYTE *v8582; // [rsp+E8h] [rbp-3FC8h]
   _QWORD *v8583; // [rsp+F0h] [rbp-3FC0h]
   _QWORD *v8584; // [rsp+F8h] [rbp-3FB8h]
   _QWORD *v8585; // [rsp+100h] [rbp-3FB0h]
@@ -10767,16 +10763,16 @@ BYTE *__fastcall gXftm3iswpkVgBNDUp()
   int v10764; // [rsp+2C54h] [rbp-145Ch]
   BYTE *v10765; // [rsp+2C58h] [rbp-1458h]
   int v10766; // [rsp+2C60h] [rbp-1450h]
-  unsigned __int8 v10767; // [rsp+2C67h] [rbp-1449h]
+  BYTE v10767_JunkWay; // [rsp+2C67h] [rbp-1449h]
   void *src; // [rsp+2C68h] [rbp-1448h]
   int v10769; // [rsp+2C70h] [rbp-1440h]
   int v10770; // [rsp+2C74h] [rbp-143Ch]
   void *dest; // [rsp+2C78h] [rbp-1438h]
-  unsigned __int8 v10772; // [rsp+2C87h] [rbp-1429h]
-  __int64 v10773; // [rsp+2C88h] [rbp-1428h]
-  __int64 v10774; // [rsp+2C90h] [rbp-1420h]
-  __int64 v10775; // [rsp+2C98h] [rbp-1418h]
-  int v10776; // [rsp+2CA0h] [rbp-1410h]
+  BYTE v10772; // [rsp+2C87h] [rbp-1429h]
+  BYTE *v10773; // [rsp+2C88h] [rbp-1428h]
+  void *v10774; // [rsp+2C90h] [rbp-1420h]
+  void *v10775_ptr_jnienv; // [rsp+2C98h] [rbp-1418h]
+  int v10776_Android_Key; // [rsp+2CA0h] [rbp-1410h]
   bool v10777; // [rsp+2CA7h] [rbp-1409h]
   __int64 v10778; // [rsp+2CA8h] [rbp-1408h]
   int v10779; // [rsp+2CB4h] [rbp-13FCh]
@@ -11396,18 +11392,18 @@ BYTE *__fastcall gXftm3iswpkVgBNDUp()
   _QWORD v11393[5]; // [rsp+4088h] [rbp-28h] BYREF
 
   v11392[1] = __readfsqword(0x28u);
-  v10775 = v2;
-  v10774 = v3;
-  v10773 = v0;
-  v10772 = v1;
+  v10775_ptr_jnienv = jnienv;
+  v10774 = thz;
+  v10773 = pData;
+  v10772 = u8Key;
   v11377 = 81;
   v10770 = 16;
   memset(s, 0, 0x10u);
-  v10769 = (*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v10775 + 1368LL))(v10775, v10773);
+  v10769 = (*(__int64 (__fastcall **)(void *, BYTE *))(*(_QWORD *)v10775_ptr_jnienv + 1368LL))(v10775_ptr_jnienv, v10773);
   dest = malloc(v10769);
-  src = (void *)(*(__int64 (__fastcall **)(__int64, __int64, _QWORD))(*(_QWORD *)v10775 + 1472LL))(v10775, v10773, 0);
-  v10767 = v10772;
-  v10776 = v10772;
+  src = (void *)(*(__int64 (__fastcall **)(void *, BYTE *, _QWORD))(*(_QWORD *)v10775_ptr_jnienv + 1472LL))(v10775_ptr_jnienv, v10773, 0);
+  v10767_JunkWay = v10772;
+  v10776_Android_Key = v10772;
   v10764 = 984568657;
   while ( 1 )
   {
@@ -12748,7 +12744,7 @@ BYTE *__fastcall gXftm3iswpkVgBNDUp()
                   if ( v10763 == 984568657 )
                   {
                     v4 = -262264641;
-                    if ( v10776 >= 255 )
+                    if ( v10776_Android_Key >= 255 )
                       v4 = -1502110314;
                     v10764 = v4;
                   }
@@ -57317,15 +57313,15 @@ BYTE *__fastcall gXftm3iswpkVgBNDUp()
       }
     }
   }
-  v10765 = (BYTE *)(*(__int64 (__fastcall **)(__int64, __int64))(*(_QWORD *)v10775 + 1408LL))(v10775, 17);
-  (*(void (__fastcall **)(__int64, BYTE *, _QWORD, __int64, char *))(*(_QWORD *)v10775 + 1664LL))(
-    v10775,
+  v10765 = (BYTE *)(*(__int64 (__fastcall **)(void *, __int64))(*(_QWORD *)v10775_ptr_jnienv + 1408LL))(v10775_ptr_jnienv, 17);
+  (*(void (__fastcall **)(void *, BYTE *, _QWORD, __int64, char *))(*(_QWORD *)v10775_ptr_jnienv + 1664LL))(
+    v10775_ptr_jnienv,
     v10765,
     0,
     1,
     &v11377);
-  (*(void (__fastcall **)(__int64, BYTE *, __int64, __int64, _BYTE *))(*(_QWORD *)v10775 + 1664LL))(
-    v10775,
+  (*(void (__fastcall **)(void *, BYTE *, __int64, __int64, _BYTE *))(*(_QWORD *)v10775_ptr_jnienv + 1664LL))(
+    v10775_ptr_jnienv,
     v10765,
     1,
     16,
@@ -57728,10 +57724,10 @@ BYTE *__fastcall gXftm3iswpkVgBNDUp()
       }
     }
   }
-  v8458 = *(void (__fastcall **)(_QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD *)v10775 + 1536LL);
+  v8458 = *(void (__fastcall **)(_QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD *)v10775_ptr_jnienv + 1536LL);
   v8582 = v10773;
   v8581 = v8458;
   v8580 = v11376;
-  v8458(v10775, v10773, src, 2);
+  v8458(v10775_ptr_jnienv, v10773, src, 2);
   return v10765;
 }

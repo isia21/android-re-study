@@ -451,3 +451,46 @@ if (state == 0x3AAF5351) {
 https://github.com/allrg/rootbeerFresh/blob/master/LibRootbeerFresh/src/main/jni/toolChecker.cpp
 
 https://github.com/allrg/rootbeerFresh/
+
+```cpp
+
+// Функция для отправки Toast. 
+// Вам понадобится доступ к объекту JNIEnv*.
+void showAndroidToast(JNIEnv* env, const std::string& message) {
+    // 1. Ищем класс по его полному пути (замените точки на слэши)
+    jclass mainActivityClass = env->FindClass("com/example/myapp/MainActivity");
+    if (mainActivityClass == nullptr) return;
+
+    // 2. Ищем статический метод. 
+    // "(Ljava/lang/String;)V" означает: принимает String, возвращает void (V)
+    jmethodID showToastMethod = env->GetStaticMethodID(mainActivityClass, "showToast", "(Ljava/lang/String;)V");
+    if (showToastMethod == nullptr) return;
+
+    // 3. Конвертируем C++ std::string в Java jstring
+    jstring jmsg = env->NewStringUTF(message.c_str());
+
+    // 4. Вызываем статический метод
+    env->CallStaticVoidMethod(mainActivityClass, showToastMethod, jmsg);
+
+    // 5. Освобождаем локальную ссылку на строку
+    env->DeleteLocalRef(jmsg);
+    env->DeleteLocalRef(mainActivityClass);
+}
+```
+
+```cpp
+
+/*
+import android.widget.Toast;
+Toast.makeText(MainActivity.this.getApplicationContext(), "Tokenizing your r2coin...", 0).show();
+*/
+
+jclass toast = env->FindClass("android/widget/Toast");
+
+jmethodID makeText =
+    env->GetStaticMethodID(
+        toast,
+        "makeText",
+        "(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;"
+    );
+    ```
