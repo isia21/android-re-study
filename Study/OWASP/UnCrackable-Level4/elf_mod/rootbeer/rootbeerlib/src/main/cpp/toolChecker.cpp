@@ -350,7 +350,6 @@ extern "C" int Java_com_scottyab_rootbeer_RootBeerNative_checkForRoot(
 	//				LOGE("Cannot resolve target");
 	//			}
 	//			else {
-			/*Да в пизду, просто сдампим data который юзается внутри 1780F0*/
 			
 			// 1. Вызываем метод с корректным пином.
 			//const byte VALID_ROOT_FLAG = 0xF0;
