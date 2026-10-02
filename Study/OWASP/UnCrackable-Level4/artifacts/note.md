@@ -496,10 +496,131 @@ jmethodID makeText =
     ```
 
     ---
+```
 
+---
+
+# 1. Запуск эмулятора
+
+```
+adb start-server
+adb devices
+
+emulator -avd ucl34 -no-snapshot-load -gpu host -memory 4096 &\
+```
+
+# 2. Сборка и тесты
 ```
 source ~/.profile
 cd tools/scripts/
 re-elf-mod.sh all -c ~/dev/sandbox/android-re-study/Study/OWASP/UnCrackable-Level4/elf_mod.config.sh
-adb logcat | grep -iE 'rootbeer|Trojan|fatal|error|elf|som33ly'
+adb logcat | grep -iE 'rootbeer|Trojan|fatal|error|elf|som33ly|SelfHook'
 ```
+
+# 3. PIN найден
+
+```
+10-01 11:50:44.656  9345  9345 I som33ly-log: JNI_OnLoad vm=0x7696610b3610
+10-01 11:50:44.656  9345  9345 I som33ly-log: [*] bypass
+10-01 11:50:44.656  9345  9345 I som33ly-log: base=0x769480667000, DoStaf addr=0x7694807df0f0
+10-01 11:50:44.656  9345  9345 I som33ly-log: resolved: fn=0x7694807df0f0 class=0x2b8a
+10-01 11:50:44.657  9345  9393 I som33ly-log: [W0] start, range 0..2500
+10-01 11:50:44.657  9345  9345 I som33ly-log: Started 4 workers, total pins = 10000
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/local/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/local/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/local/xbin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /sbin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /su/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/bin/.ext/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/bin/failsafe/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/sd/xbin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/usr/we-need-root/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/xbin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /cache/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /dev/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /product/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /apex/com.android.runtime/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /apex/com.android.art/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system_ext/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /odm/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /vendor/bin/su Absent :(
+10-01 11:50:44.657  9345  9345 I som33ly-log: LOOKING FOR BINARY: /vendor/xbin/su Absent :(
+10-01 11:50:44.659  9345  9394 I som33ly-log: [W1] start, range 2500..5000
+10-01 11:50:44.659  9345  9345 I som33ly-log: [*] bypass
+10-01 11:50:44.659  9345  9345 I som33ly-log: Brute-force already running
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/local/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/local/bin/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/local/xbin/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /sbin/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /su/bin/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/bin/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/bin/.ext/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/bin/failsafe/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/sd/xbin/su Absent :(
+10-01 11:50:44.659  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/usr/we-need-root/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system/xbin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /cache/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /data/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /dev/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /product/bin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /apex/com.android.runtime/bin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /apex/com.android.art/bin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /system_ext/bin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /odm/bin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /vendor/bin/su Absent :(
+10-01 11:50:44.660  9345  9345 I som33ly-log: LOOKING FOR BINARY: /vendor/xbin/su Absent :(
+10-01 11:50:44.662  9345  9396 I som33ly-log: [W3] start, range 7500..10000
+10-01 11:50:44.664  9345  9395 I som33ly-log: [W2] start, range 5000..7500
+10-01 11:50:44.747  9345  9365 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 11:50:44.862   586  3200 W BatteryExternalStatsWorker: error reading modem stats:ERROR_INVALID_INFO_RECEIVED
+10-01 11:50:47.326   586  1608 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-01 11:51:43.092   586  4876 W BatteryExternalStatsWorker: error reading Bluetooth stats: 11
+10-01 11:53:01.362  9345  9393 I som33ly-log: [W0] done=100 last_pin=99 avg=1367.0 ms/call
+10-01 11:53:01.722  9345  9396 I som33ly-log: [W3] done=100 last_pin=7599 avg=1370.6 ms/call
+10-01 11:53:03.440  9345  9395 I som33ly-log: [W2] done=100 last_pin=5099 avg=1387.8 ms/call
+10-01 11:53:03.569  9345  9394 I som33ly-log: [W1] done=100 last_pin=2599 avg=1389.1 ms/call
+
+...
+
+10-01 12:13:26.104  9345  9395 I som33ly-log: === FOUND === pin=00005971 bValue=0xFFFFFFF0
+10-01 12:13:26.104  9345  9395 I som33ly-log: === result[0..17]: 23 F4 D5 D2 ...
+10-01 12:13:26.104  9345  9395 I som33ly-log: [W2] exit, done=972 in 1361440 ms
+10-01 12:13:26.180  9345  9394 I som33ly-log: [W1] exit, done=979 in 1361520 ms
+10-01 12:13:27.183  9345  9396 I som33ly-log: [W3] exit, done=978 in 1362519 ms
+10-01 12:13:27.274  9345  9393 I som33ly-log: [W0] exit, done=979 in 1362616 ms
+```
+
+
+# 4. Поиск соли
+
+> Метод верификации ввода проверяет по шаблону `PIN:salt`   
+> Пин найден, разделитель ":" найден, 
+
+- unk_288160 
+- unk_2881D0
+- unk_2881F0
+
+соль
+```
+10-02 08:51:07.147  8529  8529 I som33ly-log: === result[0..17]: 23 : `r2c-f4d5d25ee0566da993c0ab6064b8e95b`
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 00288160 :	F6 97 41 70 D0 0F 60 5D	72 65 2F 70 77 6E 6D 65		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 00288170 :	2F 4D 61 69 6E 41 63 74	69 76 69 74 79 00 40 00		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 00288180 :	25 2E 32 58 20 25 2E 32	58 20 25 2E 32 58 20 25		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 00288190 :	2E 32 58 0A 00 00 00 00	00 00 00 00 00 00 00 00		
+>>>>    10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 002881A0 :	4A D8 91 93 4B 99 C3 A0	44 5F 66 AD 76 EA A1 06		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 002881B0 :	B7 0E 29 F6 61 F7 8D AC	F5 41 78 7D F5 9B A2 25		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 002881C0 :	E1 44 62 84 88 B4 6B 4C	60 47 D4 CE D3 8A 3A F7		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 002881D0 :	52 FD FC 07 21 82 65 4F	16 3F 5F 0F 9A 62 1D 72		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 002881E0 :	95 66 C7 4D 10 03 7C 4D	7B BB 04 07 D1 E2 C6 49		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 002881F0 :	4A CB 53 25 24 4C B1 9F	4C 59 BB CB 84 5E A6 75		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 00288200 :	81 78 25 97 07 E1 E6 AF	23 7C C2 74 F1 D2 A5 BF		
+10-02 08:51:07.147  8529  8529 I som33ly-log: === data dump 00288210 :	06 00 00 00 05 00 00 00	00 00 00 00 00 00 00 00		
+```
+
+
+# 5. Ответ
+
+PIN:    `5971`  
+SLAT:   `4ad891934b99c3a0445f66ad76eaa106`
